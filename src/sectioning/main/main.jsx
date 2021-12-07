@@ -2,7 +2,7 @@ import {Routes, Route} from 'react-router-dom';
 import About from '../../routes/about/about';
 import Login from '../../routes/login/login';
 import Search from '../../routes/search/search';
-import App from '../../app';
+import Landing from '../../routes/landing/landing';
 
 import "./style.css";
 
@@ -10,6 +10,7 @@ function Main() {
   return (
     <main>
       <Routes>
+        <Route path="/" element={<Landing />} />
         <Route path="about" element={<About />} />
         <Route path="login" element={<Login />} />
         <Route path="search" element={<Search />}>

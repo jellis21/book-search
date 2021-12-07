@@ -1,14 +1,5 @@
-header {
+footer {
   background-color: #888;
   padding: 40px 0;
-}
-
-.navs {
-  display: flex;
-  justify-content: space-between;
-}
-
-.navs ul li {
-  display: inline-block;
-  margin-left: 16px;
+  flex-grow: 0;
 }

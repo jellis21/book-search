@@ -1,11 +1,11 @@
-import { Outlet } from "react-router-dom";
-// import Search from '../../components/search/index';
+import { Outlet } from 'react-router-dom';
+import BookSearch from '../../components/book-search/book-search';
 import './style.css';
 
 function Search() {
   return (
     <div>
-      I am search
+      <BookSearch />
       <Outlet />
     </div>
   );

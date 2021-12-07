@@ -2,7 +2,7 @@ import { useState } from "react";
 import Modal from '../modal/modal';
 import './style.css';
 
-function Search() {
+function BookSearch() {
   const [fieldData, setFieldData] = useState({
     author: null,
     title: null,
@@ -88,4 +88,4 @@ function Search() {
   );
 }
 
-export default Search;
+export default BookSearch;

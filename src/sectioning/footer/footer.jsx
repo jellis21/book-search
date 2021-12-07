@@ -3,7 +3,9 @@ import "./style.css";
 function Footer() {
   return (
     <footer>
-      I am footer
+      <div className="y-wrap">
+        I am footer
+      </div>
     </footer>
   );
 }

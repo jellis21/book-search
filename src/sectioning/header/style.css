@@ -1,6 +1,7 @@
 header {
   background-color: #888;
   padding: 40px 0;
+  flex-grow: 0;
 }
 
 .navs {

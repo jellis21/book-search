@@ -1,0 +1,22 @@
+form {
+  margin: 40px auto 0 auto;
+  max-width: 300px;
+}
+
+.form .form__field {
+  display: flex;
+  justify-content: space-between;
+  margin: 14px 0;
+}
+
+.form button {
+  border: 1px solid transparent;
+  cursor: pointer;
+  padding: 4px 12px;
+  transition: all 400ms ease-in-out;
+}
+
+.form button:hover {
+  background-color: #333;
+  color: white;
+}
