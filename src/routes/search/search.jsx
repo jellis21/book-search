@@ -1,11 +1,12 @@
-import Header from '../../sectioning/header/header';
+import { Outlet } from "react-router-dom";
+// import Search from '../../components/search/index';
 import './style.css';
 
 function Search() {
   return (
     <div>
-      <Header />
       I am search
+      <Outlet />
     </div>
   );
 }
