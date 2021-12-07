@@ -2,7 +2,7 @@ import Header from './sectioning/header/header';
 import Main from './sectioning/main/main';
 import Footer from './sectioning/footer/footer';
 // import logo from './logo.svg';
-import './app.css';
+import './App.css';
 
 function App() {
   return (
