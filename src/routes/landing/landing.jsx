@@ -2,7 +2,7 @@ import './style.css';
 
 function Landing() {
   return (
-    <div>
+    <div className='landing-div'>
       <img className="landing-image" src="search.svg" alt="Search Icon" />
     </div>
   );

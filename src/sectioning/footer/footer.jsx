@@ -4,7 +4,8 @@ function Footer() {
   return (
     <footer>
       <div className="y-wrap">
-        I am footer
+        <p>Joshua Ellis</p>
+        <p>Created December 2021</p>
       </div>
     </footer>
   );
