@@ -1,10 +1,10 @@
 import * as types from '../actionTypes';
 
-const getNewFriends = friends => dispatch => {
+const addNewFriend = friend => dispatch => {
   dispatch({
     type: types.GET_NEW_FRIENDS,
-    friends
+    friend
   })
 }
 
-export default getNewFriends;
+export default addNewFriend;
