@@ -1,4 +1,4 @@
-import { GET_NEW_FRIENDS } from "../actionTypes";
+import { ADD_NEW_FRIEND } from "../actionTypes";
 
 const initialState = {
   friends: ['Mario', 'Peach', 'Yoshi']
@@ -6,7 +6,7 @@ const initialState = {
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
-    case GET_NEW_FRIENDS: {
+    case ADD_NEW_FRIEND: {
       return {
         friends: [...state.friends, action.friend]
       }
