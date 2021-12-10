@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { connect } from 'react-redux';
+import { executeSearch } from "../../redux/actions/addNewFriend";
 import Modal from '../modal/modal';
 import './style.css';
 
-function BookSearch() {
+function BookSearch({ executeSearch }) {
   const [fieldData, setFieldData] = useState({
     author: null,
     title: null,
@@ -21,19 +23,17 @@ function BookSearch() {
     } else {
       fieldDataCopy.title = value;
     }
-    console.log(fieldDataCopy);
     setFieldData(fieldDataCopy);
   };
-  // console.log(data);
-  // setFieldData({})
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(
-      `http://openlibrary.org/search.json?author=${fieldData.author}&limit=10`
-    )
-      .then((result) => result.json())
-      .then((data) => renderData(data));
+    // fetch(
+    //   `http://openlibrary.org/search.json?author=${fieldData.author}&limit=10`
+    // )
+    //   .then((result) => result.json())
+    //   .then((data) => renderData(data));
+    executeSearch(fieldData.author, fieldData.title);
   };
 
   const [response, setResponse] = useState();
@@ -88,4 +88,8 @@ function BookSearch() {
   );
 }
 
-export default BookSearch;
+const mapDispatchToProps = {
+  executeSearch
+}
+
+export default connect(null, mapDispatchToProps)(BookSearch);
