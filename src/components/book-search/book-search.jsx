@@ -1,14 +1,42 @@
-import { useState } from "react";
-import { connect } from 'react-redux';
+import { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import { executeSearch } from "../../redux/actions/addNewFriend";
-import Modal from '../modal/modal';
-import './style.css';
+import Modal from "../modal/modal";
+import "./style.css";
 
-function BookSearch({ executeSearch }) {
+function BookSearch({ executeSearch, results }) {
+  const createListOfBooks = (books) => {
+    // const bookArr = books.docs;
+    const listOfBooks = books.map((book, index) => {
+      return (
+        <li data-bookid={book.key} key={index}>
+          {book.author_name}: {book.title}
+        </li>
+      );
+    });
+    return listOfBooks;
+  };
+
+  // define state
   const [fieldData, setFieldData] = useState({
     author: null,
     title: null,
   });
+  const [listOfBooks, setListOfBooks] = useState();
+  const [response, setResponse] = useState();
+  const [bookDescription, setBookDescription] = useState(null);
+
+  useEffect(() => {
+    const listOfBooks = createListOfBooks(results);
+    setListOfBooks(listOfBooks);
+  }, [results]);
+
+  // "Event Listeners" for the jsx
+  const handleClick = (e) => {
+    fetch(`http://openlibrary.org${e.target.getAttribute("data-bookid")}.json`)
+      .then((res) => res.json())
+      .then((data) => setBookDescription(data.description));
+  };
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -28,40 +56,13 @@ function BookSearch({ executeSearch }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // fetch(
-    //   `http://openlibrary.org/search.json?author=${fieldData.author}&limit=10`
-    // )
-    //   .then((result) => result.json())
-    //   .then((data) => renderData(data));
     executeSearch(fieldData.author, fieldData.title);
   };
 
-  const [response, setResponse] = useState();
-
-  const renderData = (books) => {
-    const bookArr = books.docs;
-    const listOfBooks = bookArr.map((book, index) => {
-      return (
-        <li data-bookid={book.key} key={index}>
-          {book.author_name}: {book.title}
-        </li>
-      );
-    });
-    // console.log(books.docs[0].author_name);
-    setResponse(listOfBooks);
-  };
-
-  const handleClick = e => {
-    fetch(`http://openlibrary.org${e.target.getAttribute('data-bookid')}.json`)
-    .then((res) => res.json())
-    .then((data) => setBookDescription(data.description))
-  }
-
-  const [bookDescription, setBookDescription] = useState(null);
-
+  // close modal once rendered
   const closeModal = () => {
     setBookDescription(null);
-  }
+  };
 
   return (
     <>
@@ -76,20 +77,27 @@ function BookSearch({ executeSearch }) {
         </div>
         <button type="submit">Submit</button>
       </form>
-      {response && (
-      <div className="results">
-        <h2>Search Results</h2>
-        <ul className="results" onClick={handleClick}>{response}</ul>
-        </div>)}
-        {bookDescription && (
-        <Modal description={bookDescription} closeModal={closeModal}/>
-        )}
+      {results && (
+        <div className="results">
+          <h2>Search Results</h2>
+          <ul className="results" onClick={handleClick}>
+            {listOfBooks}
+          </ul>
+        </div>
+      )}
+      {bookDescription && (
+        <Modal description={bookDescription} closeModal={closeModal} />
+      )}
     </>
   );
 }
 
 const mapDispatchToProps = {
-  executeSearch
-}
+  executeSearch,
+};
 
-export default connect(null, mapDispatchToProps)(BookSearch);
+const mapStateToProps = (state) => ({
+  results: state.searchResults,
+}); // the extra parens around the curly braces means this is an implicit return (meaning "return" isn't needed)
+
+export default connect(mapStateToProps, mapDispatchToProps)(BookSearch);

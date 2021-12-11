@@ -17,4 +17,8 @@ const mapDispatchToProps = {
   executeSearch
 }
 
+// const mapStateToProps = state => {
+//   results: state.searchResults
+// }
+
 export default connect(null, mapDispatchToProps)(Search);
