@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { executeSearch } from "../../redux/actions/addNewFriend";
+import { executeSearch } from "../../redux/actions/actions";
 import Modal from "../modal/modal";
 import "./style.css";
 
@@ -77,7 +77,7 @@ function BookSearch({ executeSearch, results }) {
         </div>
         <button type="submit">Submit</button>
       </form>
-      {results && (
+      {results.length > 0 && (
         <div className="results">
           <h2>Search Results</h2>
           <ul className="results" onClick={handleClick}>

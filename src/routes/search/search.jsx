@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { executeSearch } from '../../redux/actions/addNewFriend';
+import { executeSearch } from '../../redux/actions/actions';
 import BookSearch from '../../components/book-search/book-search';
 import './style.css';
 

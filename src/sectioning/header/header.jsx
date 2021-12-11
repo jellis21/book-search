@@ -11,7 +11,6 @@ function Header() {
             <li><NavLink to="/search">Search</NavLink></li>
             <li><NavLink to="/about">About</NavLink></li>
             <li><NavLink to="/login">Login</NavLink></li>
-            <li><NavLink to="/redux">Redux</NavLink></li>
           </ul>
         </nav>
       </div>

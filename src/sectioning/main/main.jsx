@@ -3,7 +3,6 @@ import About from "../../routes/about/about";
 import Login from "../../routes/login/login";
 import Search from "../../routes/search/search";
 import Landing from "../../routes/landing/landing";
-import Redux from '../../routes/redux/redux';
 import "./style.css";
 
 function Main() {
@@ -21,7 +20,6 @@ function Main() {
             }
           />
         </Route>
-        <Route path="redux" element={<Redux />}/>
         <Route path="*" element={<p>There's nothing here!</p>} />
       </Routes>
     </main>
